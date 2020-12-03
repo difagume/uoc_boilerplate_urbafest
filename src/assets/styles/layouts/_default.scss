@@ -1,0 +1,170 @@
+/**
+* Estilo para navegadores que no soportan grid
+*/
+
+/**
+ * Estilos aplicados a etiquetas
+ */
+body { font-family: $monserrate; }
+
+footer { background-color: black; }
+
+a {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h4 { font-size: calc(1.1rem + 0.5vw); }
+
+p { font-size: calc(0.62rem + 0.6vw); }
+
+/**
+ * Estilos aplicados a clases
+ */
+.active { color: $white; }
+ 
+.font-rock { font-family: $rock-salt; }
+
+.display-4 { font-size: calc(2.23rem + 1.5vw); }
+
+.display-6 { font-size: calc(1rem + 1.5vw); }
+
+.logo-img { width: 40px; }
+
+.text-bottom {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.pointer { cursor: pointer; }
+
+.xx-small { font-size: xx-small; }
+
+.padding-0 { padding: 0; }
+
+.header,
+.footer-logo,
+.footer-menu,
+.social-buttons { background-color: black; }
+
+/* Componente sección body */
+.wrapper { text-align: center; }
+
+/* Componente sección header */
+.header {
+  display: inline-block;
+  width: 100%;
+}
+
+.logo-header { display: inline-block; }
+
+.menu { display: contents; }
+
+.menu a { margin: 0 2%; }
+
+/**
+* Estilo para navegadores con soporte grid
+*/
+@supports (display: grid) {
+  /* Componente sección header */
+  .header {
+    display: grid;
+    align-items: center;
+    grid-area: header;
+    grid-template-areas: "logo-header . menu";
+    grid-template-columns: 1fr 3fr 2fr;
+  }
+
+  .logo-header {
+    grid-area: logo-header;
+    place-self: center;
+  }
+
+  .menu {
+    display: grid;
+    align-items: center;
+    grid-area: menu;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .menu a { margin: unset; }
+
+  /* Componente sección footer */
+  .footer {
+    display: grid;
+    grid-area: footer;
+    grid-template-areas:
+      "footer-content footer-content footer-content"
+      "footer-logo footer-menu social-buttons";
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: auto 45px;
+  }
+
+  .footer-logo {
+    display: grid;
+    align-items: end;
+    justify-content: center;
+    grid-template-columns: auto;
+  }
+
+  .footer-content {
+    grid-area: footer-content;
+    text-align: center;
+  }
+
+  .footer-divider { grid-area: footer-divider; }
+
+  .social-buttons {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 0 16px;
+    grid-area: social-buttons;
+    grid-template-columns: repeat(3, auto);
+  }
+
+  .footer-menu {
+    display: grid;
+    align-items: center;
+    justify-content: space-evenly;
+    grid-area: footer-menu;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+  }
+}
+
+/**
+ * Reglas para dispositivos
+ */
+@media (max-width: 75rem) {
+  .header { grid-template-columns: 0.5fr 1fr 1.5fr; }
+}
+
+@media (max-width: 37rem) {
+  @supports (display: grid) {
+    .header {
+      grid-template-areas:
+        "logo-header"
+        "menu";
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+
+    .menu {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      justify-items: center;
+    }
+
+    .footer { grid-template-columns: 0 0 1fr; }
+
+    .social-buttons {
+      align-items: center;
+      justify-content: space-evenly;
+    }
+
+    .footer-logo,
+    .footer-menu { visibility: hidden; }
+  }
+}

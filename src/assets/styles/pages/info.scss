@@ -1,0 +1,103 @@
+/* urls */
+$url-bckgrnd: url("../images/info.jpg");
+
+/**
+ * Estilos aplicados a etiquetas
+ */
+ol {
+  padding-top: 30px;
+  padding-left: 40px;
+  counter-reset: my-counter;
+  list-style: none;
+
+  > li {
+    position: relative;
+    padding: 0 0 15px 20px;
+    margin: 0 0 0.5rem 0;
+    counter-increment: my-counter;
+
+    &::before {
+      position: absolute;
+      top: -4px;
+      left: calc(-1 * var(--size) - 10px);
+      width: var(--size);
+      height: var(--size);
+      border: 1px solid $gray;
+      border-radius: 50%;
+      color: $color-secondary;
+      content: counter(my-counter);
+      font-size: 1.5rem;
+      font-weight: bold;
+      line-height: var(--size);
+      text-align: center;
+  
+      --size: calc(25px + 0.5vw);
+    }
+  }
+}
+
+/**
+ * Estilos aplicados a clases
+ */
+.content-top {
+  position: relative;
+  height: 550px;
+  background-attachment: fixed;
+  background-color: $white;
+  background-image: $url-bckgrnd;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $white;
+
+  > span {
+    position: absolute;
+    right: 16px;
+    bottom: 8px;
+  }
+}
+
+.content-top-text {
+  > h2 {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  > p {
+    position: absolute;
+    top: 68%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.content-info {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.content-info-parrafo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: stretch;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.content-info-parrafo-left { flex: 1 1 calc(25% - 1rem); }
+
+.content-info-parrafo-right { flex: 3 1 calc(70% - 3rem); }
+
+/**
+ * Reglas para dispositivos
+ */
+@media (max-width: 40rem) {
+  ol > li {
+    padding: 0 0 15px 0;
+  }
+
+  .content-info { width: 95%; }
+}

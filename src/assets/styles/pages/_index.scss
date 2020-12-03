@@ -1,0 +1,166 @@
+/* urls */
+$url-bckgrnd-w: url("../images/portada-w.jpg");
+$url-bckgrnd-m: url("../images/portada-m.jpg");
+$url-bckgrnd: url("../images/portada.jpg");
+
+/**
+* Estilo para navegadores que no soportan grid
+*/
+
+/**
+ * Estilos aplicados a clases
+ */
+.poster-img img { max-width: 120px; }
+
+.poster {
+  position: relative;
+  height: 93vh;
+  padding: 12% 23%;
+  background-attachment: fixed;
+  background-color: $white;
+  background-image: $url-bckgrnd-w;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $white;
+
+  > span {
+    position: absolute;
+    right: 16px;
+    bottom: 8px;
+  }
+}
+
+.footer-content > .card-deck > .card {
+  min-width: 162px;
+  max-width: 180px;
+  min-height: 200px;
+  border-radius: 0;
+}
+
+/**
+* Estilo para navegadores con soporte grid
+*/
+@supports (display: grid) {
+  .wrapper {
+    display: grid;
+    grid-template-areas:
+      "header header header"
+      "content content content"
+      "footer footer footer";
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: auto auto 2fr;
+  }
+
+  .poster {
+    display: grid;
+    padding: unset;
+    gap: 0 0;
+    grid-area: content;
+    grid-template-areas:
+      "poster-fecha . ."
+      "poster-main poster-main poster-main"
+      ". poster-img poster-detalle";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 0.5fr 1.7fr 0.8fr;
+  }
+
+  .poster-fecha {
+    grid-area: poster-fecha;
+    place-self: center;
+  }
+
+  .poster-img {
+    align-self: end;
+    grid-area: poster-img;
+    justify-self: end;
+  }
+
+  .poster-main {
+    grid-area: poster-main;
+    place-self: center;
+  }
+
+  .poster-detalle {
+    align-self: end;
+    grid-area: poster-detalle;
+  }
+
+  .content span {
+    position: absolute;
+    top: 97%;
+    right: 1%;
+  }
+
+  .countdown-timer {
+    display: grid;
+    justify-content: center;
+    gap: 0 100px;
+    grid-template-areas:
+      "dias horas minutos segundos"
+      "text-d text-h text-m text-s";
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(2, auto);
+  }
+
+  .dias { grid-area: dias; }
+
+  .horas { grid-area: horas; }
+
+  .minutos { grid-area: minutos; }
+
+  .segundos { grid-area: segundos; }
+
+  .text-d { grid-area: text-d; }
+
+  .text-h { grid-area: text-h; }
+
+  .text-m { grid-area: text-m; }
+
+  .text-s { grid-area: text-s; }
+}
+
+/**
+ * Reglas para dispositivos
+ */
+@media (max-width: 75rem) {
+  .poster { background-image: $url-bckgrnd-m; }
+
+  .display-1 { font-size: 5.5rem; }
+}
+
+@media (max-width: 37rem) {
+  .poster {
+    height: 92vh;
+    padding: 65% 8%;
+    background-image: $url-bckgrnd;
+  }
+
+  .display-1 { font-size: 3rem; }
+
+  @supports (display: grid) {
+    .poster {
+      height: 78vh;
+      padding: unset;
+      grid-template-areas:
+        "poster-fecha . ."
+        "poster-main poster-main poster-main"
+        "poster-img poster-detalle poster-detalle";
+    }
+
+    .countdown-timer {
+      grid-template-areas:
+        "dias"
+        "text-d"
+        "horas"
+        "text-h"
+        "minutos"
+        "text-m"
+        "segundos"
+        "text-s";
+      grid-template-columns: repeat(1, auto);
+    }
+
+    .card-deck > .card { min-height: unset; }
+  }
+}
