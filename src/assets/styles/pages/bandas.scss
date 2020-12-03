@@ -28,11 +28,6 @@
 .card {
   background-color: $white;
   box-shadow: $box-shadow;
-
-  > img {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-  }
 }
 
 .card-content {

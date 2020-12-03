@@ -7,8 +7,6 @@
  */
 body { font-family: $monserrate; }
 
-footer { background-color: black; }
-
 a {
   font-weight: bold;
   text-transform: uppercase;
@@ -31,11 +29,7 @@ p { font-size: calc(0.62rem + 0.6vw); }
 
 .logo-img { width: 40px; }
 
-.text-bottom {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-}
+.text-bottom { @include text-bottom; }
 
 .pointer { cursor: pointer; }
 
@@ -43,13 +37,12 @@ p { font-size: calc(0.62rem + 0.6vw); }
 
 .padding-0 { padding: 0; }
 
-.header,
-.footer-logo,
-.footer-menu,
-.social-buttons { background-color: black; }
+.bg-black { background-color: $black; }
 
-/* Componente sección body */
-.wrapper { text-align: center; }
+.border-top-round {
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
 
 /* Componente sección header */
 .header {
@@ -85,7 +78,7 @@ p { font-size: calc(0.62rem + 0.6vw); }
     display: grid;
     align-items: center;
     grid-area: menu;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .menu a { margin: unset; }
@@ -148,12 +141,12 @@ p { font-size: calc(0.62rem + 0.6vw); }
         "logo-header"
         "menu";
       grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr;
+      grid-template-rows: repeat(2, 1fr);
     }
 
     .menu {
       grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-rows: repeat(3, 1fr);
       justify-items: center;
     }
 
