@@ -4,6 +4,11 @@
 @import "variables";
 
 /**
+ * Import mixins
+ */
+@import "mixins";
+
+/**
  * Import npm dependencies
  * see: https://en.parceljs.org/module_resolution.html
  * see commented examples below
